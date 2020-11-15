@@ -1,0 +1,2 @@
+from .MNIST import import_mnist
+from .gaussian_mixture import gaussian_mixture_generate, gaussian_mixture_load
