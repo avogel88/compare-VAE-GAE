@@ -99,7 +99,10 @@ def plot_strip(images,
     dim = np.ndim(images)
     images = np.expand_dims(images, axis=list(range(5 - dim)))
     rows, columns, dimy, dimx, channels = np.shape(images)
-    fig, axes = plt.subplots(rows, columns, figsize=(6, 2),
+    fig, axes = plt.subplots(rows, columns,
+                             sharex=True, sharey=True,
+                             figsize=(columns+.1, rows+.1),
+                             dpi=100/columns*20,
                              gridspec_kw={'hspace': 0.0, 'wspace': 0.0})
     for row in range(rows):
         for col in range(columns):
@@ -124,7 +127,7 @@ def plot_strip(images,
     if path:
         os.makedirs(dirname(path), exist_ok=True)
         plt.savefig(path, bbox_inches='tight')
-    plt.close()
+        plt.close()
 
 
 def plot_metrics(x, val, title, ax):

@@ -1,4 +1,3 @@
-import abc
 import numpy as np
 import os
 import tensorflow as tf
@@ -110,7 +109,7 @@ class Autoencoder(Sequential):
         self.decoder = Sequential(decoder, 'Decoder')
 
         # is optimizer initialized?
-        if type(optimizer) == abc.ABCMeta:
+        if not isinstance(optimizer, Optimizer):
             optimizer = optimizer(learning_rate)
         self.compile(optimizer, loss)
 
